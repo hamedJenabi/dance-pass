@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "migrate": "dotenv ley",
+    "heroku-postbuild": "yarn migrate up && yarn build",
+    "start": "next start -p ${PORT:-\"3000\"}"
   },
   "dependencies": {
     "next": "10.0.3",
