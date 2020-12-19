@@ -1,9 +1,9 @@
 exports.up = async (sql) => {
   await sql`
-  CREATE TABLE accounts(
+  CREATE TABLE users(
   id SERIAL PRIMARY KEY,
   email varchar(255) NOT NULL,
-  password_hash varchar(255) NOT NULL,
+  password_hash varchar(255),
   first_name varchar(255) NOT NULL,
   last_name varchar(255) NOT NULL,
   created_at timestamp,
@@ -14,6 +14,6 @@ exports.up = async (sql) => {
 
 exports.down = async (sql) => {
   await sql`
-	DROP TABLE accounts
+	DROP TABLE users
 	`;
 };
