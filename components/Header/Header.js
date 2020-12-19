@@ -38,14 +38,14 @@ export default function Header({}) {
     window.pageYOffset > 0 ? setShadow(true) : setShadow(false);
 
     console.log("currentScrollPoscurrentScrollPos", window.pageYOffset);
-    window.pageYOffset > 1100 ? setScrollState(true) : setScrollState(false);
+    window.pageYOffset > 300 ? setScrollState(true) : setScrollState(false);
   };
 
   return (
     <div
       className={classNames(styles.container, {
         [styles.visible]: shadow,
-        [styles.white]: scrollState,
+        [styles.unfix]: scrollState,
       })}
     >
       <div
