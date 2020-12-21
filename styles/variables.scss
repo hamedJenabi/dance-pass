@@ -78,6 +78,23 @@ $xxl: 42px;
   animation-timing-function: ease-in;
   animation-duration: 600ms;
 }
+@keyframes anime {
+  0% {
+    left: 0px;
+    top: 0px;
+  }
+  100% {
+    left: 0px;
+    top: 80px;
+  }
+}
+@mixin animation {
+  position: relative;
+
+  animation-name: anime;
+  animation-duration: 700ms;
+  animation-direction: reverse;
+}
 @mixin textLink {
   color: $darkblue;
   position: relative;
@@ -97,4 +114,10 @@ $xxl: 42px;
     visibility: visible;
     transform: scaleX(1);
   }
+}
+@mixin modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
 }
