@@ -24,21 +24,27 @@ export default function Header({}) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [shadow, setShadow] = useState(false);
   const [scrollState, setScrollState] = useState(false);
+  let lastScrollTop = 0;
 
   useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
     window.addEventListener("scroll", headerColorChange);
     return function cleanup() {
       window.removeEventListener("scroll", headerColorChange);
     };
   }, []);
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+
   const headerColorChange = () => {
     window.pageYOffset > 0 ? setShadow(true) : setShadow(false);
-
-    console.log("currentScrollPoscurrentScrollPos", window.pageYOffset);
-    window.pageYOffset > 300 ? setScrollState(true) : setScrollState(false);
+    let st = window.pageYOffset || document.documentElement.scrollTop;
+    if (st > lastScrollTop) {
+      setScrollState(true);
+    } else {
+      setScrollState(false);
+    }
+    lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
   };
 
   return (
@@ -46,6 +52,7 @@ export default function Header({}) {
       className={classNames(styles.container, {
         [styles.visible]: shadow,
         [styles.unfix]: scrollState,
+        [styles.fix]: !scrollState,
       })}
     >
       <div

@@ -37,7 +37,6 @@ export default function LoginHeader({}) {
   const headerColorChange = () => {
     window.pageYOffset > 0 ? setShadow(true) : setShadow(false);
 
-    console.log("currentScrollPoscurrentScrollPos", window.pageYOffset);
     window.pageYOffset > 1100 ? setScrollState(true) : setScrollState(false);
   };
 
@@ -53,7 +52,12 @@ export default function LoginHeader({}) {
           [styles.white]: scrollState,
         })}
       >
-        <p>Login</p>
+        <p>
+          already registered?{"  "}
+          <Link href="/login" as="/login">
+            <a className={styles.link}>login here</a>
+          </Link>
+        </p>
       </div>
     </div>
   );

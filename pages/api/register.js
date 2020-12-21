@@ -3,4 +3,6 @@ export default async function register(req, res) {
   console.log("req", req.body);
   const userToInsert = req.body;
   const userId = await insertUserAccount(userToInsert);
+  res.statusCode = 200;
+  res.json({ register: true });
 }

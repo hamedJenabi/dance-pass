@@ -12,7 +12,8 @@
 # next.js
 /.next/
 /out/
-
+#backups
+components/we/components
 # production
 /build
 
