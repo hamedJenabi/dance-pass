@@ -19,7 +19,13 @@ export default function Home() {
   const isMobile = useMedia({ maxWidth: "768px" });
   const [step, setStep] = useState(1);
   const form = useFormState({
-    values: { firstName: "", lastName: "", email: "", ticket: "" },
+    values: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      ticket: "",
+      competition: "",
+    },
     onValidate: (values) => {
       const errors = {};
       if (!values.firstName) {
