@@ -57,7 +57,7 @@ export default function Home() {
         })
         .then((json) => {
           if (json.register === true) {
-            alert("Aaaand you are in!");
+            alert("And you are in!");
           } else {
             alert("What just happened? Please try again!");
           }
@@ -65,7 +65,7 @@ export default function Home() {
         .catch((error) => console.log(error));
     },
   });
-  console.log("formformform", form);
+  console.log("form", form);
 
   return (
     <div className={styles.container}>
@@ -86,12 +86,6 @@ export default function Home() {
       <div className={styles.section}>
         <h2>Maybe some subtitle here!</h2>
         <RegistrationForm form={form} />
-        <RegistrationForm form={form} />
-        <RegistrationForm form={form} />
-        <RegistrationForm form={form} />
-        <RegistrationForm form={form} />
-        <RegistrationForm form={form} />
-        {/* {step === 2 && <Ticket setStep={setStep} form={form} />} */}
       </div>
     </div>
   );

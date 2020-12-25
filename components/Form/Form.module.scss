@@ -36,6 +36,7 @@
 }
 .paper {
   border: none;
+  border-radius: 5px;
   @include fade-in-fast;
   @include animation;
   outline: none;
@@ -45,4 +46,12 @@
   @media (min-width: 900px) {
     width: 40%;
   }
+}
+.infoIcon {
+  width: $lg;
+  color: $blue;
+  margin-left: $xs;
+}
+.radioLabel {
+  display: flex;
 }

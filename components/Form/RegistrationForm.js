@@ -8,7 +8,6 @@ import {
   unstable_FormInput as FormInput,
   unstable_FormSubmitButton as FormSubmitButton,
 } from "reakit/Form";
-import { makeStyles } from "@material-ui/core/styles";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -56,6 +55,8 @@ export default function RegistrationForm({ form }) {
       />
       <FormMessage {...form} name="email" />
       <Tickets form={form} />
+
+
       <Competitions form={form} />
       <FormSubmitButton className={styles.button} {...form}>
         submit

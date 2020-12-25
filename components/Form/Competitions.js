@@ -1,85 +1,77 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 
-import {
-  unstable_useFormState as useFormState,
-  unstable_Form as Form,
-  unstable_FormMessage as FormMessage,
-  unstable_FormRadioGroup as FormRadioGroup,
-  unstable_FormRadio as FormRadio,
-  unstable_FormInput as FormInput,
-  unstable_FormSubmitButton as FormSubmitButton,
-} from "reakit/Form";
-import { makeStyles } from "@material-ui/core/styles";
+import { unstable_FormMessage as FormMessage } from "reakit/Form";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import InfoModal from "../Modal/Modal.tsx";
+import InfoModal from "../Modal/Modal.js";
 import styles from "./Form.module.scss";
-import Modal from "@material-ui/core/Modal";
-import Fade from "@material-ui/core/Fade";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 const Competitions = ({ show = true, form }) => {
-  const useStyles = makeStyles((theme) => ({
-    formControl: {
-      margin: theme.spacing(3),
-    },
-    button: {
-      margin: theme.spacing(1, 1, 0, 0),
-    },
-  }));
-
   // to make a ticket info modal
   const Label = (value) => {
-    const [open, setOpen] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
+
     return (
-      <>
-        <button onClick={() => setOpen(true)}>
-          here comes infos about {value}
-        </button>
-        <Modal
-          onClose={() => setOpen(false)}
-          onBackdropClick={() => setOpen(false)}
-          closeAfterTransition
-          className={styles.modal}
-          open={open}
-        >
-          <Fade in={open}>
-            <div
-              className={styles.paper}
-            >
-              <h2 id="transition-modal-title">Transition modal</h2>
-              <p id="transition-modal-description">
-                react-transition-group animates me.
-              </p>
-            </div>
-          </Fade>
-        </Modal>
-      </>
+      <div className={styles.radioLabel}>
+        <p>here comes infos about {value}</p>
+        <FontAwesomeIcon
+          className={styles.infoIcon}
+          size="2x"
+          icon={faInfoCircle}
+          onClick={() => setOpenModal(true)}
+        />
+        <InfoModal info="hello" setOpen={setOpenModal} open={openModal} />
+      </div>
     );
   };
   const handleRadioChange = (event) => {
     form.values.ticket = event.target.value;
   };
+
   return (
     <div className={styles.radioGroup}>
       {show && (
         <>
-          <h3>Comps you wanna choose:</h3>
+          <h3>Do you want to do comps?</h3>
           <RadioGroup
-            aria-label="quiz"
-            name="quiz"
+            aria-label="competition"
+            name="competition"
             onChange={handleRadioChange}
           >
-            <FormControlLabel value="best" control={<Radio />} label="MnM!" />
+            <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+            <FormControlLabel value="no" control={<Radio />} label="No" />
             <FormControlLabel
-              value="worst"
+              value="later"
               control={<Radio />}
-              label={Label(
-                "every competitioevery competitioevery competitioevery competition"
-              )}
+              label="I will decide later"
             />
           </RadioGroup>
-          <FormMessage {...form} name="ticket" />
+          <FormMessage {...form} name="competition" />
+          {true && (
+            <>
+              <h3>Comps you wanna choose:</h3>
+              <RadioGroup
+                aria-label="quiz"
+                name="quiz"
+                onChange={handleRadioChange}
+              >
+                <FormControlLabel
+                  value="best"
+                  control={<Radio />}
+                  label="MnM!"
+                />
+                <FormControlLabel
+                  value="worst"
+                  control={<Radio />}
+                  label={Label("com")}
+                />
+              </RadioGroup>
+              <FormMessage {...form} name="ticket" />
+            </>
+          )}
         </>
       )}
     </div>

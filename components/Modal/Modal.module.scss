@@ -1,0 +1,18 @@
+@import "../../styles/variables";
+
+.modal {
+  @include modal;
+}
+.paper {
+  border: none;
+  border-radius: 5px;
+  @include fade-in-fast;
+  @include animation;
+  outline: none;
+  background-color: $white;
+  width: 70%;
+  padding: 20px 20px;
+  @media (min-width: 900px) {
+    width: 40%;
+  }
+}
