@@ -48,11 +48,15 @@
   }
 }
 .infoIcon {
-  width: $lg;
+  font-size: $md;
   color: $blue;
   margin-left: $xs;
+  cursor: pointer;
 }
 .radioLabel {
   display: flex;
   align-items: center;
+}
+.compeitionItem {
+  margin: 2px 0 !important;
 }

@@ -8,17 +8,16 @@ import {
   unstable_FormInput as FormInput,
   unstable_FormSubmitButton as FormSubmitButton,
 } from "reakit/Form";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Tickets from "./Ticket";
 import TextField from "@material-ui/core/TextField";
+import Divider from "@material-ui/core/Divider";
 
 import styles from "./Form.module.scss";
 import Competitions from "./Competitions";
 
-export default function RegistrationForm({ form }) {
-  console.log("formherere", form);
+export default function RegistrationForm({ form, data }) {
+  const { tickets, levels, competitions } = data;
+  console.log("datadatadatadata", tickets);
   return (
     <Form className={styles.container} {...form}>
       <TextField
@@ -33,7 +32,7 @@ export default function RegistrationForm({ form }) {
       />
       <FormMessage {...form} name="firstName" />
       <TextField
-        label="last Name"
+        label="Last Name"
         variant="outlined"
         className={styles.input}
         onChange={(event) => {
@@ -54,10 +53,10 @@ export default function RegistrationForm({ form }) {
         placeholder="email"
       />
       <FormMessage {...form} name="email" />
-      <Tickets form={form} />
+      <Tickets form={form} tickets={tickets} levels={levels} />
 
-
-      <Competitions form={form} />
+      <Divider style={{ minWidth: "400px" }} string />
+      <Competitions form={form} competitions={competitions} />
       <FormSubmitButton className={styles.button} {...form}>
         submit
       </FormSubmitButton>

@@ -10,10 +10,7 @@ const RegistrationForm = dynamic(
   () => import("../components/Form/RegistrationForm.js"),
   { ssr: false }
 );
-// import RegistrationForm from "../components/Form/RegistrationForm.js";
-import Ticket from "../components/Form/Ticket.js";
 import { unstable_useFormState as useFormState } from "reakit/Form";
-import { ErrorOutlineSharp } from "@material-ui/icons";
 
 export default function Home() {
   const isMobile = useMedia({ maxWidth: "768px" });
@@ -25,6 +22,7 @@ export default function Home() {
       email: "",
       ticket: "",
       competition: "",
+      comps: [],
     },
     onValidate: (values) => {
       const errors = {};
@@ -46,33 +44,36 @@ export default function Home() {
     },
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
-      fetch("/api/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Cache-Control": "no-cache, no-store",
-        },
-        body: JSON.stringify(form.values),
-      })
-        .then((response) => {
-          if (response.ok !== true) {
-            setStatus("sign up failed");
-          }
+      // fetch("/api/register", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     "Cache-Control": "no-cache, no-store",
+      //   },
+      //   body: JSON.stringify(form.values),
+      // })
+      //   .then((response) => {
+      //     if (response.ok !== true) {
+      //       setStatus("sign up failed");
+      //     }
 
-          return response.json();
-        })
-        .then((json) => {
-          if (json.register === true) {
-            alert("And you are in!");
-          } else {
-            alert("What just happened? Please try again!");
-          }
-        })
-        .catch((error) => console.log(error));
+      //     return response.json();
+      //   })
+      //   .then((json) => {
+      //     if (json.register === true) {
+      //       alert("And you are in!");
+      //     } else {
+      //       alert("What just happened? Please try again!");
+      //     }
+      //   })
+      //   .catch((error) => console.log(error));
     },
   });
-  console.log("form", form);
-
+  const data = {
+    tickets: ["Fullpass", "Partypass"],
+    levels: ["Beginner", "Intermediate", "Advanced", "Advanced+"],
+    competitions: ["MnM", "Strictly", "Solo"],
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -91,7 +92,7 @@ export default function Home() {
       <Header />
       <div className={styles.section}>
         <h2>Maybe some subtitle here!</h2>
-        <RegistrationForm form={form} />
+        <RegistrationForm form={form} data={data} />
       </div>
     </div>
   );

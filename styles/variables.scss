@@ -30,10 +30,9 @@ $xxl: 42px;
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 0.15em;
-  text-align: center;
-  width: 100px;
+  width: 110px;
   height: $xxl;
-  margin: $sm;
+  margin: $sm 0;
 
   &:hover {
     background-color: #ffffff;

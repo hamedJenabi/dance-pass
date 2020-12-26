@@ -12,7 +12,7 @@ import InfoModal from "../Modal/Modal.js";
 
 import styles from "./Form.module.scss";
 
-const Tickets = ({ show = true, form }) => {
+const Tickets = ({ show = true, form, tickets }) => {
   const useStyles = makeStyles((theme) => ({
     formControl: {
       margin: theme.spacing(3),
@@ -27,10 +27,9 @@ const Tickets = ({ show = true, form }) => {
 
     return (
       <div className={styles.radioLabel}>
-        <p>here comes infos about {value}</p>
+        <p>{value}</p>
         <FontAwesomeIcon
           className={styles.infoIcon}
-          size="2x"
           icon={faInfoCircle}
           onClick={() => setOpenModal(true)}
         />
@@ -43,29 +42,24 @@ const Tickets = ({ show = true, form }) => {
   };
   return (
     <div className={styles.radioGroup}>
-      {show && (
-        <>
-          <h3>please choose your ticket:</h3>
-          <RadioGroup
-            aria-label="ticket"
-            name="ticket"
-            // value={value}
-            onChange={handleRadioChange}
-          >
-            <FormControlLabel
-              value="best"
-              control={<Radio />}
-              label={Label("first ticker")}
-            />
-            <FormControlLabel
-              value="worst"
-              control={<Radio />}
-              label={Label("every ticket")}
-            />
-          </RadioGroup>
-          <FormMessage {...form} name="ticket" />
-        </>
-      )}
+      <h3>please choose your ticket:</h3>
+
+      <RadioGroup
+        aria-label="ticket"
+        name="ticket"
+        // value={value}
+        onChange={handleRadioChange}
+      >
+        {tickets.map((ticket) => (
+          <FormControlLabel
+            value={ticket}
+            key={ticket}
+            control={<Radio />}
+            label={Label(ticket)}
+          />
+        ))}
+      </RadioGroup>
+      <FormMessage {...form} name="ticket" />
     </div>
   );
 };
