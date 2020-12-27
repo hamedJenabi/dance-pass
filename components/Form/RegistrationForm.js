@@ -74,9 +74,10 @@ export default function RegistrationForm({ form, data }) {
           />
         )}
       />
+      <Divider style={{ minWidth: "350px", marginTop: "40px" }} />
       <Tickets form={form} tickets={tickets} levels={levels} />
 
-      <Divider style={{ minWidth: "400px" }} />
+      <Divider style={{ minWidth: "350px" }} />
       <Competitions form={form} competitions={competitions} />
       <FormSubmitButton className={styles.button} {...form}>
         submit

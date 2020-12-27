@@ -9,7 +9,7 @@ export default function InfoModal({ open, setOpen, info }) {
       <Modal
         onClose={() => setOpen(false)}
         onBackdropClick={() => setOpen(false)}
-        closeAfterTransition
+        // closeAfterTransition
         className={styles.modal}
         open={open}
       >

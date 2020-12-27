@@ -2,7 +2,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   max-width: 90%;
   @media (min-width: 600px) {
@@ -31,6 +31,7 @@
 .radioGroup {
   @include fade-in-slow;
 }
+
 .modal {
   @include modal;
 }

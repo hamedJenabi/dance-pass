@@ -8,8 +8,8 @@ import Modal from "@material-ui/core/Modal";
 import Fade from "@material-ui/core/Fade";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import InfoIcon from "@material-ui/icons/Info";
-import InfoModal from "../Modal/Modal.js";
-
+// import InfoModal from "../Modal/Modal.js";
+import InfoModal from "../InfoModal/InfoModal";
 import styles from "./Form.module.scss";
 
 const Tickets = ({ form, tickets, levels }) => {
@@ -28,11 +28,7 @@ const Tickets = ({ form, tickets, levels }) => {
     return (
       <div className={styles.radioLabel}>
         <p>{value}</p>
-        <InfoIcon
-          className={styles.infoIcon}
-          onClick={() => setOpenModal(true)}
-        />
-        <InfoModal info="hello" setOpen={setOpenModal} open={openModal} />
+        <InfoModal header={value} info="this is some info" />
       </div>
     );
   };

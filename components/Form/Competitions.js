@@ -5,10 +5,8 @@ import { unstable_FormMessage as FormMessage } from "reakit/Form";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import InfoModal from "../Modal/Modal.js";
+import InfoModal from "../InfoModal/InfoModal";
 import styles from "./Form.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { Checkbox } from "@material-ui/core";
 import InfoIcon from "@material-ui/icons/Info";
 const style = (theme) => ({
@@ -92,15 +90,7 @@ const Competitions = ({ form, competitions }) => {
                     label={competition}
                   />
 
-                  <InfoIcon
-                    className={styles.infoIcon}
-                    onClick={() => setOpenModal(true)}
-                  />
-                  <InfoModal
-                    info="hello"
-                    setOpen={setOpenModal}
-                    open={openModal}
-                  />
+                  <InfoModal header={competition} info="this is some info" />
                 </div>
               );
             })}

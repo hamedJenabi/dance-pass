@@ -22,3 +22,4 @@ export async function insertUserAccount(user) {
   RETURNING id
     `;
 }
+

@@ -16,9 +16,12 @@ $xxl: 42px;
 @mixin input {
   border: none;
   background-color: #ffff;
-  width: 340px;
+  width: 100%;
   height: $xxl;
   margin: $sm 0 !important;
+  @media (min-width: 900px) {
+    width: 340px;
+  }
 }
 @mixin button {
   background-color: #000000;
@@ -134,5 +137,19 @@ $xxl: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 100;
+}
+
+@mixin focus {
+  outline: none;
+
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    border: 1px dashed $blue;
+  }
 }

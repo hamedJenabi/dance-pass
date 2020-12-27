@@ -6,7 +6,6 @@
 .paper {
   border: none;
   border-radius: 5px;
-  @include fade-in-fast;
   @include animation;
   outline: none;
   background-color: $white;

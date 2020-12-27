@@ -19,7 +19,11 @@ p {
 h1 {
   letter-spacing: 2px;
 }
-
+h2 {
+  @media (max-width: 900px) {
+    font-size: 20px;
+  }
+}
 * {
   box-sizing: border-box;
 }
