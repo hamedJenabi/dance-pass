@@ -12,7 +12,7 @@ const RegistrationForm = dynamic(
 );
 import { unstable_useFormState as useFormState } from "reakit/Form";
 
-export default function Home() {
+export default function register() {
   const isMobile = useMedia({ maxWidth: "768px" });
   const [step, setStep] = useState(1);
   const form = useFormState({

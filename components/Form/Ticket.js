@@ -7,12 +7,14 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Modal from "@material-ui/core/Modal";
 import Fade from "@material-ui/core/Fade";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import InfoIcon from "@material-ui/icons/Info";
 import InfoModal from "../Modal/Modal.js";
 
 import styles from "./Form.module.scss";
 
-const Tickets = ({ show = true, form, tickets }) => {
+const Tickets = ({ form, tickets, levels }) => {
+  const [levelShown, setLevelShown] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
   const useStyles = makeStyles((theme) => ({
     formControl: {
       margin: theme.spacing(3),
@@ -23,22 +25,27 @@ const Tickets = ({ show = true, form, tickets }) => {
   }));
   // to make a ticket info modal
   const Label = (value) => {
-    const [openModal, setOpenModal] = useState(false);
-
     return (
       <div className={styles.radioLabel}>
         <p>{value}</p>
-        <FontAwesomeIcon
+        <InfoIcon
           className={styles.infoIcon}
-          icon={faInfoCircle}
           onClick={() => setOpenModal(true)}
         />
         <InfoModal info="hello" setOpen={setOpenModal} open={openModal} />
       </div>
     );
   };
-  const handleRadioChange = (event) => {
+  const handleTicketChange = (event) => {
     form.values.ticket = event.target.value;
+    if (form.values.ticket === "Fullpass") {
+      setLevelShown(true);
+    } else {
+      setLevelShown(false);
+    }
+  };
+  const handleLevelChange = (event) => {
+    form.values.level = event.target.value;
   };
   return (
     <div className={styles.radioGroup}>
@@ -47,19 +54,38 @@ const Tickets = ({ show = true, form, tickets }) => {
       <RadioGroup
         aria-label="ticket"
         name="ticket"
-        // value={value}
-        onChange={handleRadioChange}
+        onChange={handleTicketChange}
       >
         {tickets.map((ticket) => (
           <FormControlLabel
             value={ticket}
             key={ticket}
-            control={<Radio />}
+            control={<Radio color="primary" />}
             label={Label(ticket)}
           />
         ))}
       </RadioGroup>
       <FormMessage {...form} name="ticket" />
+      {levelShown && (
+        <div className={styles.radioGroup}>
+          <h3>please choose your level:</h3>
+          <RadioGroup
+            aria-label="level"
+            name="level"
+            onChange={handleLevelChange}
+          >
+            {levels.map((level) => (
+              <FormControlLabel
+                value={level}
+                key={level}
+                control={<Radio color="primary" />}
+                label={Label(level)}
+              />
+            ))}
+          </RadioGroup>
+          <FormMessage {...form} name="levels" />
+        </div>
+      )}
     </div>
   );
 };

@@ -52,11 +52,18 @@
   color: $blue;
   margin-left: $xs;
   cursor: pointer;
+  &:hover {
+    @include pulse;
+  }
 }
 .radioLabel {
   display: flex;
   align-items: center;
 }
+.itemRow {
+  display: flex;
+  align-items: center;
+}
 .compeitionItem {
-  margin: 2px 0 !important;
+  margin-right: 0 !important;
 }

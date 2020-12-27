@@ -10,7 +10,7 @@ import styles from "./Form.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { Checkbox } from "@material-ui/core";
-
+import InfoIcon from "@material-ui/icons/Info";
 const style = (theme) => ({
   root: {
     height: 180,
@@ -56,11 +56,19 @@ const Competitions = ({ form, competitions }) => {
           name="competition"
           onChange={handleRadioChange}
         >
-          <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-          <FormControlLabel value="no" control={<Radio />} label="No" />
+          <FormControlLabel
+            value="yes"
+            control={<Radio color="primary" />}
+            label="Yes"
+          />
+          <FormControlLabel
+            value="no"
+            control={<Radio color="primary" />}
+            label="No"
+          />
           <FormControlLabel
             value="later"
-            control={<Radio />}
+            control={<Radio color="primary" />}
             label="I will decide later"
           />
         </RadioGroup>
@@ -70,11 +78,12 @@ const Competitions = ({ form, competitions }) => {
             <h3>Comps you wanna choose:</h3>
             {competitions.map((competition) => {
               return (
-                <div key={competition}>
+                <div className={styles.itemRow} key={competition}>
                   <FormControlLabel
                     className={styles.compeitionItem}
                     control={
                       <Checkbox
+                        color="primary"
                         name="comps"
                         value={competition}
                         onChange={handleCheckBoxChange}
@@ -82,9 +91,9 @@ const Competitions = ({ form, competitions }) => {
                     }
                     label={competition}
                   />
-                  <FontAwesomeIcon
+
+                  <InfoIcon
                     className={styles.infoIcon}
-                    icon={faInfoCircle}
                     onClick={() => setOpenModal(true)}
                   />
                   <InfoModal
@@ -95,19 +104,6 @@ const Competitions = ({ form, competitions }) => {
                 </div>
               );
             })}
-            {/* <RadioGroup
-              aria-label="quiz"
-              name="quiz"
-              onChange={handleRadioChange}
-            >
-              <FormControlLabel value="best" control={<Radio />} label="MnM!" />
-              <FormControlLabel
-                value="worst"
-                control={<Radio />}
-                label={Label("com")}
-              />
-            </RadioGroup>
-            <FormMessage {...form} name="competition" /> */}
           </div>
         )}
       </>
