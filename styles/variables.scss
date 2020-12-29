@@ -12,6 +12,9 @@ $md: 26px;
 $lg: 32px;
 $xl: 32px;
 $xxl: 42px;
+$breakpointSm: 370px;
+$breakpointMd: 760px;
+$breakpointLg: 1080px;
 
 @mixin input {
   border: none;
@@ -19,8 +22,8 @@ $xxl: 42px;
   width: 100%;
   height: $xxl;
   margin: $sm 0 !important;
-  @media (min-width: 900px) {
-    width: 340px;
+  @media (min-width: $breakpointMd) {
+    width: 400px;
   }
 }
 @mixin button {

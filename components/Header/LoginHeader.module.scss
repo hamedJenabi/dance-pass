@@ -10,7 +10,7 @@
   background-color: $white;
   position: fixed;
   top: 0;
-  @media (min-width: 1080px) {
+  @media (min-width: $breakpointLg) {
     max-width: 1286px;
   }
 }

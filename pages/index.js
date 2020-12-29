@@ -30,15 +30,18 @@ export default function Home() {
       const errors = {};
       if (!values.firstName) {
         errors.firstName = "please write your name";
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
       if (!values.lastName) {
         errors.lastName = "please write your name";
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
       if (
         !values.email ||
         !emailRegex.test(values.email.trim().toLowerCase())
       ) {
         errors.email = "Email is not valid";
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
       if (Object.keys(errors).length > 0) {
         throw errors;
@@ -72,9 +75,18 @@ export default function Home() {
     },
   });
   const data = {
-    tickets: ["Fullpass", "Partypass"],
-    levels: ["Beginner", "Intermediate", "Advanced", "Advanced+"],
-    competitions: ["MnM", "Strictly", "Solo"],
+    tickets: ["Fullpass", "Partypass", "Beginner Pass"],
+    levels: ["Intermediate", "Intermediate/Advanced", "Advanced", "Advanced+"],
+    competitions: [
+      "MnM",
+      "Strictly",
+      "SoloSoloSoloSoloSoloSolo",
+      "Solo",
+      "Solo",
+      "Solo",
+      "Solo",
+      "Solo",
+    ],
   };
   return (
     <div className={styles.container}>
@@ -93,7 +105,6 @@ export default function Home() {
       <LoginHeader />
       <Header />
       <div className={styles.section}>
-        <h2>Maybe some subtitle here!</h2>
         <RegistrationForm form={form} data={data} />
       </div>
     </div>

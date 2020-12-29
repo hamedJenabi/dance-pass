@@ -71,7 +71,7 @@ import {
   DialogBackdrop,
   DialogDisclosure,
 } from "reakit/Dialog";
-
+import CloseIcon from "@material-ui/icons/Close";
 const InfoModal = ({ header, info }) => {
   const dialog = useDialogState();
 
@@ -86,15 +86,19 @@ const InfoModal = ({ header, info }) => {
         <InfoIcon className={styles.infoIcon} />
       </DialogDisclosure>
       <DialogBackdrop {...dialog} className={styles.backdrop}>
-        <Dialog
-          {...dialog}
-          preventBodyScroll={false} // disable built-in preventBodyScr  oll from reakit
-        >
+        <Dialog {...dialog} preventBodyScroll={false}>
           <div
             className={classNames(styles.card, {
               [styles.visible]: show,
             })}
           >
+            <div className={styles.closeIconWrapper}>
+              <CloseIcon
+                tabIndex={0}
+                onClick={dialog.hide}
+                className={styles.closeIcon}
+              />
+            </div>
             <div className={styles.content}>
               <h2 id="transition-modal-title">{header}</h2>
               <p id="transition-modal-description">{info}</p>

@@ -1,4 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+
 import {
   unstable_useFormState as useFormState,
   unstable_Form as Form,
@@ -8,25 +13,53 @@ import {
   unstable_FormInput as FormInput,
   unstable_FormSubmitButton as FormSubmitButton,
 } from "reakit/Form";
+import classNames from "classnames";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import Tickets from "./Ticket";
+import Terms from "./Terms";
 import Divider from "@material-ui/core/Divider";
 import styles from "./Form.module.scss";
 import Competitions from "./Competitions";
 import countries from "../../utils/countries";
-
+import ErrorModal from "../Modal/Modal";
+import { useDialogState } from "reakit/Dialog";
 const flatProps = {
   options: countries.map((option) => option.title),
 };
-console.log("flasprosp", countries);
+
 export default function RegistrationForm({ form, data }) {
+  const [step, setStep] = useState(1);
+  const [disable, setDisable] = useState(true);
+  const dialog = useDialogState();
+
+  console.log("form", form);
   const { tickets, levels, competitions } = data;
-  console.log("datadatadatadata", tickets);
+  const handleNext = (event) => {
+    // if(form.values.firstName === '')
+    // ‎{
+    //   alert('hello')
+    // }
+    event.preventDefault();
+    if (!form.values.firstName || !form.values.lastName || !form.values.email) {
+      // alert("haha");
+      dialog.show();
+    } else {
+      setStep((prev) => prev + 1);
+    }
+  };
+  const handleBack = (event) => {
+    event.preventDefault();
+    setStep((prev) => prev - 1);
+  };
+
   return (
     <Form className={styles.container} {...form}>
       <TextField
+        required
+        onBlur={() => () => form.validate()}
         label="First Name"
+        defaultValue={form.values.firstName}
         variant="outlined"
         className={styles.input}
         onChange={(event) => {
@@ -37,8 +70,10 @@ export default function RegistrationForm({ form, data }) {
       />
       <FormMessage {...form} name="firstName" />
       <TextField
+        required
         label="Last Name"
         variant="outlined"
+        defaultValue={form.values.lastName}
         className={styles.input}
         onChange={(event) => {
           form.values.lastName = event.target.value;
@@ -48,12 +83,19 @@ export default function RegistrationForm({ form, data }) {
       />
       <FormMessage {...form} name="lastName" />
       <TextField
-        label="email"
+        required
+        label="E-mail"
         variant="outlined"
         className={styles.input}
+        defaultValue={form.values.email}
         onChange={(event) => {
           form.values.email = event.target.value;
         }}
+        onBlur={() =>
+          form.values.lastName && form.values.firstName && form.values.email
+            ? setDisable(false)
+            : (setDisable(true), form.validate())
+        }
         name="email"
         placeholder="email"
       />
@@ -65,20 +107,21 @@ export default function RegistrationForm({ form, data }) {
         className={styles.input}
         renderInput={(params) => (
           <TextField
+            variant="outlined"
             {...params}
-            label="countries"
-            margin="normal"
+            label="Country"
             onChange={(event) => {
               form.values.country = event.target.value;
             }}
           />
         )}
       />
-      <Divider style={{ minWidth: "350px", marginTop: "40px" }} />
+      <Divider light className={styles.devider} />
       <Tickets form={form} tickets={tickets} levels={levels} />
-
-      <Divider style={{ minWidth: "350px" }} />
+      <Divider light className={styles.devider} />
       <Competitions form={form} competitions={competitions} />
+      <Divider light className={styles.devider} />
+      <Terms form={form} />
       <FormSubmitButton className={styles.button} {...form}>
         submit
       </FormSubmitButton>

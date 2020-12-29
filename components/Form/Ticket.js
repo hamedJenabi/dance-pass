@@ -70,14 +70,16 @@ const Tickets = ({ form, tickets, levels }) => {
             name="level"
             onChange={handleLevelChange}
           >
-            {levels.map((level) => (
-              <FormControlLabel
-                value={level}
-                key={level}
-                control={<Radio color="primary" />}
-                label={Label(level)}
-              />
-            ))}
+            <div className={styles.levelGroup}>
+              {levels.map((level) => (
+                <FormControlLabel
+                  value={level}
+                  key={level}
+                  control={<Radio color="primary" />}
+                  label={Label(level)}
+                />
+              ))}
+            </div>
           </RadioGroup>
           <FormMessage {...form} name="levels" />
         </div>

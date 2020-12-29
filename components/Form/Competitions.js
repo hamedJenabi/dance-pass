@@ -47,33 +47,34 @@ const Competitions = ({ form, competitions }) => {
   };
   return (
     <div className={styles.radioGroup}>
-      <>
-        <h3>Do you want to do comps?</h3>
-        <RadioGroup
-          aria-label="competition"
-          name="competition"
-          onChange={handleRadioChange}
-        >
-          <FormControlLabel
-            value="yes"
-            control={<Radio color="primary" />}
-            label="Yes"
-          />
-          <FormControlLabel
-            value="no"
-            control={<Radio color="primary" />}
-            label="No"
-          />
-          <FormControlLabel
-            value="later"
-            control={<Radio color="primary" />}
-            label="I will decide later"
-          />
-        </RadioGroup>
-        <FormMessage {...form} name="competition" />
-        {show && (
-          <div className={styles.radioGroup}>
-            <h3>Comps you wanna choose:</h3>
+      <h3>Do you want to do comps?</h3>
+      <RadioGroup
+        aria-label="competition"
+        name="competition"
+        className={styles.radioWrapper}
+        onChange={handleRadioChange}
+      >
+        <FormControlLabel
+          value="yes"
+          control={<Radio color="primary" />}
+          label="Yes"
+        />
+        <FormControlLabel
+          value="no"
+          control={<Radio color="primary" />}
+          label="No"
+        />
+        <FormControlLabel
+          value="later"
+          control={<Radio color="primary" />}
+          label="I will decide later"
+        />
+      </RadioGroup>
+      <FormMessage {...form} name="competition" />
+      {show && (
+        <div className={styles.radioGroup}>
+          <h3>Choose them here:</h3>
+          <div className={styles.levelGroup}>
             {competitions.map((competition) => {
               return (
                 <div className={styles.itemRow} key={competition}>
@@ -95,8 +96,8 @@ const Competitions = ({ form, competitions }) => {
               );
             })}
           </div>
-        )}
-      </>
+        </div>
+      )}
     </div>
   );
 };
