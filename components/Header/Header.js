@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // nodejs library to set properties for components
@@ -8,15 +9,16 @@ import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 // core components
 import styles from "./Header.module.scss";
-
+import HomeIcon from "@material-ui/icons/Home";
 const useStyles = makeStyles(styles);
 
-export default function Header({}) {
+export default function Header({ title }) {
   const classes = useStyles();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [shadow, setShadow] = useState(false);
   const [scrollState, setScrollState] = useState(false);
   let lastScrollTop = 0;
+  const router = useRouter();
 
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
@@ -52,7 +54,12 @@ export default function Header({}) {
           [styles.white]: scrollState,
         })}
       >
-        <p>welcome to this event</p>
+        <HomeIcon
+          onClick={() => router.push("/")}
+          fontSize="large"
+          className={styles.icon}
+        />
+        <p>{title}</p>
       </div>
     </div>
   );

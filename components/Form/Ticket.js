@@ -11,6 +11,8 @@ import InfoIcon from "@material-ui/icons/Info";
 // import InfoModal from "../Modal/Modal.js";
 import InfoModal from "../InfoModal/InfoModal";
 import styles from "./Form.module.scss";
+import Divider from "@material-ui/core/Divider";
+
 
 const Tickets = ({ form, tickets, levels }) => {
   const [levelShown, setLevelShown] = useState(false);
@@ -64,6 +66,8 @@ const Tickets = ({ form, tickets, levels }) => {
       <FormMessage {...form} name="ticket" />
       {levelShown && (
         <div className={styles.radioGroup}>
+                <Divider light className={styles.devider} />
+
           <h3>please choose your level:</h3>
           <RadioGroup
             aria-label="level"

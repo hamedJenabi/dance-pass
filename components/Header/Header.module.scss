@@ -2,9 +2,8 @@
 .container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   height: $header;
-
   z-index: 1000;
   width: 100%;
   background-color: $blue;
@@ -31,11 +30,24 @@
 .linkWrapper {
   width: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-evenly;
-  align-content: center;
+  padding-right: space(sm);
+  @media (min-width: $breakpointLg) {
+    padding-right: 0;
+    flex-grow: 1;
+  }
   p {
     margin: 0;
+    text-align: center;
+    width: 100%;
     font-size: $smallFont;
     color: $navy;
+  }
+}
+.icon {
+  margin-left: $xl;
+  &:hover {
+    cursor: pointer;
   }
 }

@@ -1,8 +1,4 @@
 import React, { useState, useEffect } from "react";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
 
 import {
   unstable_useFormState as useFormState,
@@ -68,7 +64,7 @@ export default function RegistrationForm({ form, data }) {
         name="firstName"
         placeholder="first name"
       />
-      <FormMessage {...form} name="firstName" />
+      <FormMessage className={styles.errorMessage} {...form} name="firstName" />
       <TextField
         required
         label="Last Name"
@@ -81,7 +77,7 @@ export default function RegistrationForm({ form, data }) {
         name="lastName"
         placeholder="last name"
       />
-      <FormMessage {...form} name="lastName" />
+      <FormMessage className={styles.errorMessage} {...form} name="lastName" />
       <TextField
         required
         label="E-mail"
@@ -99,7 +95,7 @@ export default function RegistrationForm({ form, data }) {
         name="email"
         placeholder="email"
       />
-      <FormMessage {...form} name="email" />
+      <FormMessage className={styles.errorMessage} {...form} name="email" />
       <Autocomplete
         {...flatProps}
         id="debug"
@@ -123,7 +119,7 @@ export default function RegistrationForm({ form, data }) {
       <Divider light className={styles.devider} />
       <Terms form={form} />
       <FormSubmitButton className={styles.button} {...form}>
-        submit
+        Proceed to checkout
       </FormSubmitButton>
     </Form>
   );

@@ -9,6 +9,14 @@ import InfoModal from "../InfoModal/InfoModal";
 import styles from "./Form.module.scss";
 import { Checkbox } from "@material-ui/core";
 import InfoIcon from "@material-ui/icons/Info";
+import {
+  unstable_useFormState as useFormState,
+  unstable_Form as Form,
+  unstable_FormLabel as FormLabel,
+  unstable_FormCheckbox as FormCheckbox,
+  unstable_FormGroup as FormGroup,
+  unstable_FormSubmitButton as FormSubmitButton,
+} from "reakit/Form";
 const style = (theme) => ({
   root: {
     height: 180,
@@ -75,7 +83,7 @@ const Competitions = ({ form, competitions }) => {
         <div className={styles.radioGroup}>
           <h3>Choose them here:</h3>
           <div className={styles.levelGroup}>
-            {competitions.map((competition) => {
+            {/* {competitions.map((competition) => {
               return (
                 <div className={styles.itemRow} key={competition}>
                   <FormControlLabel
@@ -92,6 +100,22 @@ const Competitions = ({ form, competitions }) => {
                   />
 
                   <InfoModal header={competition} info="this is some info" />
+                </div>
+              );
+            })} */}
+            {competitions.map((competition) => {
+              return (
+                <div className={styles.radioLabel} key={competition}>
+                  <label className={styles.itemRow}>
+                    <FormCheckbox
+                      className={styles.checkbox}
+                      {...form}
+                      name="comps"
+                      value={competition}
+                    />
+                    <p>{competition}</p>
+                    <InfoModal header={competition} info="this is some info" />
+                  </label>
                 </div>
               );
             })}
