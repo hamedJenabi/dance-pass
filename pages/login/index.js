@@ -81,8 +81,8 @@ export default function login() {
       </Head>
       <Header title="login" />
       <div className={styles.section}>
-        <h2>Sign in to your account</h2>
-        <Form {...form}>
+        <h1>Sign in to your account</h1>
+        <Form className={styles.form} {...form}>
           <div className={styles.label}>
             <FormInput
               className={styles.input}
@@ -107,7 +107,7 @@ export default function login() {
           <FormSubmitButton className={styles.button} {...form}>
             login
           </FormSubmitButton>
-        </Form>{" "}
+        </Form>
       </div>
     </div>
   );

@@ -14,7 +14,12 @@
     width: 100%;
   }
 }
-
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .input {
   @include fade-in-fast;
   @include input;
@@ -33,123 +38,5 @@
 .button {
   @include button;
   @include fade-in-slow;
-  margin-top: $lg;
   height: 60px;
-  border-radius: 40px;
-  &.disabled {
-    background-color: grey;
-    &:hover {
-      color: $white;
-      border: none;
-      cursor: auto;
-    }
-  }
-}
-.backButton {
-  @include button;
-  @include fade-in-slow;
-  margin-top: $lg;
-  margin-right: $xs;
-  background-color: $white;
-  color: black;
-  border: 1px solid black;
-  &:hover {
-    background-color: black;
-    color: $white;
-  }
-}
-.radioGroup {
-  @include fade-in-slow;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.levelGroup {
-  display: flex;
-  @include fade-in-slow;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  @media (min-width: 700px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    max-width: 700px;
-  }
-}
-
-.modal {
-  @include modal;
-}
-.paper {
-  border: none;
-  border-radius: 5px;
-  @include fade-in-fast;
-  @include animation;
-  outline: none;
-  background-color: $white;
-  width: 70%;
-  padding: 20px 20px;
-  @media (min-width: 900px) {
-    width: 40%;
-  }
-}
-.infoIcon {
-  font-size: $md;
-  color: $blue;
-  margin-left: $xs;
-  cursor: pointer;
-  &:hover {
-    @include pulse;
-  }
-}
-.label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.itemRow {
-  display: flex;
-  margin-right: $md;
-}
-.compeitionItem {
-  margin-right: 0 !important;
-}
-
-.devider {
-  min-width: 300px;
-  margin: $lg 0 !important;
-  @media (min-width: 700px) {
-    width: 600px;
-  }
-  @media (min-width: 1080px) {
-    width: 800px;
-  }
-}
-.checkbox {
-  appearance: none;
-  border: 1px solid $blue;
-  border-radius: 4px;
-  outline: none;
-  cursor: pointer;
-  width: 19px;
-  height: 19px;
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  margin-top: 0;
-  margin-right: 5px;
-  &:after {
-    content: "✓";
-    display: none;
-    color: white;
-    font-size: 100%;
-  }
-  &:checked {
-    background-color: #3f51b5;
-    &:after {
-      display: block;
-    }
-  }
 }

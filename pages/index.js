@@ -83,10 +83,10 @@ export default function Home() {
       "Strictly",
       "SoloSoloSoloSoloSoloSolo",
       "Solo",
-      "Solo",
-      "Solo",
-      "Solo",
-      "Solo",
+      "Solo2",
+      "Solo4",
+      "Solo6",
+      "Solo8",
     ],
     roles: ["Leader", "Follower"],
   };
@@ -105,7 +105,7 @@ export default function Home() {
         />
       </Head>
       <LoginHeader />
-      <Header />
+      <Header title="Welcome" />
       <div className={styles.section}>
         <RegistrationForm form={form} data={data} />
       </div>

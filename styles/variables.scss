@@ -28,8 +28,7 @@ $breakpointLg: 1080px;
 }
 @mixin button {
   background-color: $white;
-
-  border-radius: 3px;
+  border-radius: 40px;
   font-family: Fjalla One, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: $sm;
