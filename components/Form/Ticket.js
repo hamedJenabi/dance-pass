@@ -13,8 +13,7 @@ import InfoModal from "../InfoModal/InfoModal";
 import styles from "./Form.module.scss";
 import Divider from "@material-ui/core/Divider";
 
-
-const Tickets = ({ form, tickets, levels }) => {
+const Tickets = ({ form, tickets, levels, roles }) => {
   const [levelShown, setLevelShown] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const useStyles = makeStyles((theme) => ({
@@ -45,6 +44,9 @@ const Tickets = ({ form, tickets, levels }) => {
   const handleLevelChange = (event) => {
     form.values.level = event.target.value;
   };
+  const handleRoleChange = (event) => {
+    form.values.role = event.target.value;
+  };
   return (
     <div className={styles.radioGroup}>
       <h3>please choose your ticket:</h3>
@@ -66,7 +68,7 @@ const Tickets = ({ form, tickets, levels }) => {
       <FormMessage {...form} name="ticket" />
       {levelShown && (
         <div className={styles.radioGroup}>
-                <Divider light className={styles.devider} />
+          <Divider light className={styles.devider} />
 
           <h3>please choose your level:</h3>
           <RadioGroup
@@ -81,6 +83,26 @@ const Tickets = ({ form, tickets, levels }) => {
                   key={level}
                   control={<Radio color="primary" />}
                   label={Label(level)}
+                />
+              ))}
+            </div>
+          </RadioGroup>
+          <FormMessage {...form} name="levels" />
+        </div>
+      )}
+      {levelShown && (
+        <div className={styles.radioGroup}>
+          <Divider light className={styles.devider} />
+
+          <h3>please choose your level:</h3>
+          <RadioGroup aria-label="role" name="role" onChange={handleRoleChange}>
+            <div className={styles.roleGroup}>
+              {roles.map((role) => (
+                <FormControlLabel
+                  value={role}
+                  key={role}
+                  control={<Radio color="primary" />}
+                  label={Label(role)}
                 />
               ))}
             </div>

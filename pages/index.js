@@ -22,6 +22,7 @@ export default function Home() {
       email: "",
       country: "",
       ticket: "",
+      role: "",
       level: "",
       competition: "",
       comps: [],
@@ -87,6 +88,7 @@ export default function Home() {
       "Solo",
       "Solo",
     ],
+    roles: ["Leader", "Follower"],
   };
   return (
     <div className={styles.container}>

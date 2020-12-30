@@ -30,7 +30,7 @@ export default function RegistrationForm({ form, data }) {
   const dialog = useDialogState();
 
   console.log("form", form);
-  const { tickets, levels, competitions } = data;
+  const { tickets, levels, competitions, roles } = data;
   const handleNext = (event) => {
     // if(form.values.firstName === '')
     // ‎{
@@ -113,7 +113,7 @@ export default function RegistrationForm({ form, data }) {
         )}
       />
       <Divider light className={styles.devider} />
-      <Tickets form={form} tickets={tickets} levels={levels} />
+      <Tickets form={form} tickets={tickets} levels={levels} roles={roles} />
       <Divider light className={styles.devider} />
       <Competitions form={form} competitions={competitions} />
       <Divider light className={styles.devider} />
