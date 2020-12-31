@@ -7,6 +7,7 @@ exports.up = async (sql) => {
   first_name varchar(255) NOT NULL,
   last_name varchar(255) NOT NULL,
   country varchar(255),
+  role varchar(255),
   created_at timestamp,
   class_id int
 )

@@ -4,7 +4,6 @@ exports.up = async (sql) => {
 		id int PRIMARY KEY,
 		name varchar,
 		price int,
-		role role,
 		class level,
 		capacity int
 	  );
