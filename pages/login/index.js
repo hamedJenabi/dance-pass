@@ -18,7 +18,9 @@ import { emailRegex } from "../../utils/validate";
 import Header from "../../components/Header/Header.js";
 import LoginHeader from "../../components/Header/LoginHeader.js";
 import styles from "./login.module.scss";
-export default function login() {
+
+const LoginForm = dynamic(() => import("./LoginForm.js"), { ssr: false });
+const Login = () => {
   const [status, setStatus] = useState("");
   const form = useFormState({
     values: {
@@ -81,34 +83,10 @@ export default function login() {
       </Head>
       <Header title="login" />
       <div className={styles.section}>
-        <h1>Sign in to your account</h1>
-        <Form className={styles.form} {...form}>
-          <div className={styles.label}>
-            <FormInput
-              className={styles.input}
-              {...form}
-              name="email"
-              placeholder="your email"
-            />
-            <FormMessage {...form} name="email" />
-          </div>
-          <div className={styles.label}>
-            <FormInput
-              className={styles.input}
-              {...form}
-              name="password"
-              type="password"
-              placeholder="your password"
-            />
-            {status === "failed" && (
-              <p style={{ margin: 0 }}>Check your username or password!</p>
-            )}
-          </div>
-          <FormSubmitButton className={styles.button} {...form}>
-            login
-          </FormSubmitButton>
-        </Form>
+        <LoginForm form={form} />
       </div>
     </div>
   );
-}
+};
+
+export default Login;

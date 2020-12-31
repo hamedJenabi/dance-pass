@@ -19,7 +19,7 @@ import styles from "./LoginHeader.module.scss";
 
 const useStyles = makeStyles(styles);
 
-export default function LoginHeader({}) {
+export default function LoginHeader({ status = "out" }) {
   const classes = useStyles();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [shadow, setShadow] = useState(false);
@@ -52,12 +52,14 @@ export default function LoginHeader({}) {
           [styles.white]: scrollState,
         })}
       >
-        <p>
-          already registered?{"  "}
-          <Link href="/login" as="/login">
-            <a className={styles.link}>login here</a>
-          </Link>
-        </p>
+        {status === "out" && (
+          <p>
+            already registered?{"  "}
+            <Link href="/login" as="/login">
+              <a className={styles.link}>login here</a>
+            </Link>
+          </p>
+        )}
       </div>
     </div>
   );

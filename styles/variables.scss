@@ -9,12 +9,13 @@ $darkblue: rgb(75, 100, 111);
 $xs: 10px;
 $sm: 16px;
 $md: 26px;
-$lg: 32px;
-$xl: 32px;
-$xxl: 42px;
+$lg: 36px;
+$xl: 46px;
+$xxl: 56px;
 $breakpointSm: 370px;
 $breakpointMd: 760px;
 $breakpointLg: 1080px;
+$boxShadow: 0 22px 45px 0 rgba(0, 0, 0, 0.11);
 
 @mixin input {
   border: none;
@@ -32,13 +33,14 @@ $breakpointLg: 1080px;
   font-family: Fjalla One, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: $sm;
+  box-shadow: 15px 30px -10px rgba(0, 0, 0, 0.35);
   border: none;
   text-transform: uppercase;
   text-decoration: none;
   width: 180px;
   height: 60px;
   margin: $sm 0;
-  border: 1px solid #000000;
+  border: 1px solid $blue;
 
   &:hover {
     background-color: $blue;
