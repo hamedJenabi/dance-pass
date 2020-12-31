@@ -16,7 +16,6 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import { emailRegex } from "../../utils/validate";
 import Header from "../../components/Header/Header.js";
-import LoginForm from "/LoginForm.js";
 import styles from "./login.module.scss";
 
 // const LoginForm = dynamic(() => import("./LoginForm.js"), { ssr: false });
@@ -83,7 +82,33 @@ const Login = () => {
       </Head>
       <Header title="login" />
       <div className={styles.section}>
-        <LoginForm form={form} />
+        <Form className={styles.form} {...form}>
+          <h1>Sign in to your account</h1>
+          <div className={styles.label}>
+            <FormInput
+              className={styles.input}
+              {...form}
+              name="email"
+              placeholder="your email"
+            />
+            <FormMessage {...form} name="email" />
+          </div>
+          <div className={styles.label}>
+            <FormInput
+              className={styles.input}
+              {...form}
+              name="password"
+              type="password"
+              placeholder="your password"
+            />
+            {status === "failed" && (
+              <p style={{ margin: 0 }}>Check your username or password!</p>
+            )}
+          </div>
+          <FormSubmitButton className={styles.button} {...form}>
+            login
+          </FormSubmitButton>
+        </Form>
       </div>
     </div>
   );
