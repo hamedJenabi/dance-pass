@@ -18,7 +18,7 @@ import { emailRegex } from "../../utils/validate";
 import Header from "../../components/Header/Header.js";
 import styles from "./login.module.scss";
 
-// const LoginForm = dynamic(() => import("./LoginForm.js"), { ssr: false });
+
 const Login = () => {
   const [status, setStatus] = useState("");
   const form = useFormState({
