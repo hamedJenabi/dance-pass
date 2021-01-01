@@ -26,6 +26,7 @@ export default function Home() {
       level: "",
       competition: "",
       comps: [],
+      terms: "",
     },
     onValidate: (values) => {
       const errors = {};
@@ -42,6 +43,10 @@ export default function Home() {
         !emailRegex.test(values.email.trim().toLowerCase())
       ) {
         errors.email = "Email is not valid";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      if (values.terms.length === 0) {
+        errors.terms = "Please check this box";
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
       if (Object.keys(errors).length > 0) {
