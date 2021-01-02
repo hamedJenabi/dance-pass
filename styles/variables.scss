@@ -1,4 +1,5 @@
 $white: #fff;
+$milk: rgb(250, 248, 248);
 $paddingRight: 10px;
 $header: 60px;
 $mediumFont: 40px;
@@ -56,6 +57,14 @@ $boxShadow: 0 22px 45px 0 rgba(0, 0, 0, 0.11);
     transition: 300ms;
     outline: none;
     border: 1px solid #000000;
+  }
+  &:focus {
+    outline: none;
+    @include focus();
+    &::after {
+      margin: -7px !important;
+      border-radius: 31px !important;
+    }
   }
 }
 

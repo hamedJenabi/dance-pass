@@ -1,0 +1,27 @@
+@import "../../styles/variables";
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $lg $sm;
+  width: calc(100% / 6);
+}
+.items {
+  padding: $sm;
+  margin: $sm 0;
+  border-bottom: 1px solid rgb(238, 233, 233);
+}
+.buttonContainer {
+  flex-grow: 1;
+  justify-self: flex-end;
+}
+.button {
+  @include button;
+  justify-items: flex-end;
+}
+.hamburger {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  margin: $md $md;
+}
