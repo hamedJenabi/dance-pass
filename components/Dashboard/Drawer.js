@@ -1,28 +1,24 @@
 import React from "react";
-import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import { Squash as Hamburger } from "hamburger-react";
 import styles from "./SideBar.module.scss";
+import classNames from "classnames";
 
 const useStyles = makeStyles({
   list: {
-    width: 250,
+    width: 280,
   },
-  fullList: {
-    width: "auto",
+  root: {
+    width: "100%",
   },
 });
 
-export default function SwipeableTemporaryDrawer() {
+export default function Drawer({ navLinks }) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
@@ -45,34 +41,22 @@ export default function SwipeableTemporaryDrawer() {
 
   const list = (anchor) => (
     <div
-      className={clsx(classes.list, {
-        [classes.fullList]: anchor === "top" || anchor === "bottom",
-      })}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
+      className={classNames(styles.container, classes.list)}
     >
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
+      <button className={styles.eventButton}>Create an event</button>
+      <List className={classes.root}>
+        {navLinks.map((text) => (
+          <ListItem className={styles.items} button key={text}>
+            <ListItemText className={styles.text} primary={text} />
           </ListItem>
         ))}
       </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+      <div className={styles.buttonContainer}>
+        <button className={styles.button}>Log out</button>
+      </div>
     </div>
   );
 
@@ -88,6 +72,7 @@ export default function SwipeableTemporaryDrawer() {
         open={state["left"]}
         onClose={toggleDrawer("left", false)}
         onOpen={toggleDrawer("left", true)}
+        className={styles.drawer}
       >
         {list("left")}
       </SwipeableDrawer>

@@ -19,8 +19,8 @@
   @media (min-width: $breakpointLg) {
     border-radius: $xl;
     margin-top: 0;
-    width: calc(100% - #{$xxl} - #{$xxl} - #{$xxl});
-    height: calc(100% - #{$xxl} - #{$xxl} - #{$xxl});
+    width: calc(100% - #{$xxl} - #{$xxl});
+    height: calc(100% - #{$xxl} - #{$xxl});
   }
 }
 

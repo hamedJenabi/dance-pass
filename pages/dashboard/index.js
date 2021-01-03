@@ -11,21 +11,13 @@ import classNames from "classnames";
 export default function Dashboard() {
   const isDesktop = useMedia({ minWidth: "1080px" });
 
-  const data = {
-    tickets: ["Fullpass", "Partypass", "Beginner Pass"],
-    levels: ["Intermediate", "Intermediate/Advanced", "Advanced", "Advanced+"],
-    competitions: [
-      "MnM",
-      "Strictly",
-      "SoloSoloSoloSoloSoloSolo",
-      "Solo",
-      "Solo2",
-      "Solo4",
-      "Solo6",
-      "Solo8",
-    ],
-    roles: ["Leader", "Follower"],
-  };
+  const navLinks = [
+    "Dashboard",
+    "Registration List",
+    "Classes",
+    "Analytics",
+    "Mails",
+  ];
   return (
     <div className={styles.container}>
       <Head>
@@ -41,9 +33,9 @@ export default function Dashboard() {
         />
       </Head>
       {/* <LoginHeader /> */}
-      {!isDesktop && <Drawer />}
+      {!isDesktop && <Drawer navLinks={navLinks} />}
       <div className={styles.section}>
-        {isDesktop && <SideBar />}
+        {isDesktop && <SideBar navLinks={navLinks} />}
 
         <div className={styles.dashboard}>
           <h1>Dashboard</h1>
@@ -57,3 +49,11 @@ export default function Dashboard() {
     </div>
   );
 }
+// export async function getServerSideProps() {
+//   // Fetch data from external API
+//   const res = await fetch(`https://.../data`);
+//   const data = await res.json();
+
+//   // Pass data to the page via props
+//   return { props: { data } };
+// }
