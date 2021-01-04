@@ -6,7 +6,6 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Modal from "@material-ui/core/Modal";
 import Fade from "@material-ui/core/Fade";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import InfoIcon from "@material-ui/icons/Info";
 // import InfoModal from "../Modal/Modal.js";
 import InfoModal from "../InfoModal/InfoModal";

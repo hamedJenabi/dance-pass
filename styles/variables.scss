@@ -5,8 +5,8 @@ $header: 60px;
 $mediumFont: 40px;
 $smallFont: 20px;
 $navy: #00001a;
-$blue: #26a0a8;
-$darkblue: rgb(91, 121, 134);
+$blue: #3a3d41;
+$darkblue: #5a5f66;
 $xxs: 5px;
 $xs: 10px;
 $sm: 16px;
@@ -17,7 +17,7 @@ $xxl: 56px;
 $breakpointSm: 370px;
 $breakpointMd: 760px;
 $breakpointLg: 1080px;
-$boxShadow: 0 22px 45px 0 rgba(0, 0, 0, 0.11);
+$boxShadow: 0 22px 45px 0 rgba(85, 76, 76, 0.11);
 $Paragraph: Fjalla One, Roboto, -apple-system, BlinkMacSystemFont, Segoe UI,
   Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 $headerFont: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu,
@@ -25,17 +25,34 @@ $headerFont: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu
 
 @mixin input {
   border: none;
-  background-color: #ffff;
-  width: 100%;
+  background-color: inherit;
+  width: 300px;
   height: $xxl;
   margin: $sm 0 !important;
+  color: white !important;
   @media (min-width: $breakpointMd) {
     width: 400px;
   }
+  label {
+    color: white;
+  }
+  fieldset {
+    border-radius: 30px !important;
+    border: 1px solid white;
+    color: white;
+  }
+  input::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(143, 134, 134);
+    opacity: 1; /* Firefox */
+  }
+  input {
+    color: white;
+    font: 1em/1.25em Arial, Helvetica, sans-serif;
+  }
 }
 @mixin button {
-  background-color: $white;
-  border-radius: 40px;
+  background-color: #e4e6eb;
   font-family: Fjalla One, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: $sm;
@@ -47,9 +64,9 @@ $headerFont: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu
   height: 60px;
   margin: $sm 0;
   border: 1px solid $blue;
-
+  border-radius: 40px !important;
   &:hover {
-    background-color: $blue;
+    background-color: $darkblue;
     cursor: pointer;
     color: $white;
     transition: 300ms;
