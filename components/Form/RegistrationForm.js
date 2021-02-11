@@ -51,7 +51,7 @@ export default function RegistrationForm({ form, data }) {
 
   return (
     <Form className={styles.container} {...form}>
-      <TextField
+      <input
         required
         onBlur={() => () => form.validate()}
         label="First Name"
@@ -65,7 +65,7 @@ export default function RegistrationForm({ form, data }) {
         placeholder="first name"
       />
       <FormMessage className={styles.errorMessage} {...form} name="firstName" />
-      <TextField
+      <input
         required
         label="Last Name"
         variant="outlined"
@@ -78,7 +78,7 @@ export default function RegistrationForm({ form, data }) {
         placeholder="last name"
       />
       <FormMessage className={styles.errorMessage} {...form} name="lastName" />
-      <TextField
+      <input
         required
         label="E-mail"
         variant="outlined"
@@ -101,6 +101,7 @@ export default function RegistrationForm({ form, data }) {
         id="debug"
         debug
         className={styles.input}
+       
         renderInput={(params) => (
           <TextField
             variant="outlined"
