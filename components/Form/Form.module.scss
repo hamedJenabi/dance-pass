@@ -11,9 +11,6 @@
 .input {
   @include fade-in-fast;
   @include input;
-  fieldset {
-    border-radius: 30px !important;
-  }
 }
 .errorMessage {
   @include error;
@@ -36,7 +33,7 @@
   @include button;
   @include fade-in-slow;
   margin-top: $lg;
-  border-radius: 40px !important;
+
   &.disabled {
     background-color: grey;
     &:hover {

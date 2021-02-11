@@ -10,8 +10,11 @@
   flex-direction: column;
   align-items: center;
   padding: 200px 0;
-  @media (min-width: 600px) {
-    width: 100%;
+  h1 {
+    font-size: 20px;
+    @media (min-width: 600px) {
+      width: 100%;
+    }
   }
 }
 .form {
@@ -19,10 +22,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  @media (min-width: $breakpointMd) {
-    border-radius: 50px;
+  padding: $lg $lg;
+  @media (min-width: 600px) {
     box-shadow: $boxShadow;
+    background-color: #2f3134;
+    border-radius: 50px;
     padding: $xxl $xxl;
+    width: 100%;
   }
 }
 .input {

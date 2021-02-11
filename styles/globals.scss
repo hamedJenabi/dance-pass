@@ -1,20 +1,24 @@
 html,
 body {
-  max-width: 1366px;
+  background-color: #18191a;
   width: 100%;
   margin: auto;
   font-family: Fjalla One, Open Sans, -apple-system, BlinkMacSystemFont,
     Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
     Helvetica Neue, sans-serif;
+  color: #e4e6eb;
 }
-
+span {
+  color: #e4e6eb;
+}
 a {
-  color: inherit;
+  color: #b4b6b9;
   text-decoration: none;
 }
 p {
   font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    color: #e4e6eb;
 }
 h1 {
   letter-spacing: 2px;

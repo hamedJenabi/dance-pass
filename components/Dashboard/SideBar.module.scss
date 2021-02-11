@@ -1,0 +1,59 @@
+@import "../../styles/variables";
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100% -#{$sm});
+  @media (min-width: $breakpointLg) {
+    justify-content: space-evenly;
+    width: calc(100% / 5);
+  }
+}
+.drawer {
+  opacity: 0.9;
+}
+.text {
+  padding: $xxs 0;
+  width: 100%;
+  text-align: center;
+  span {
+    font-family: Fjalla One, Open Sans;
+    letter-spacing: 1px;
+    font-size: $md;
+  }
+}
+.eventButton {
+  @include button;
+  border-radius: 5px;
+  background-color: $blue;
+  &:hover {
+    color: initial;
+    background-color: #2fc3ce;
+  }
+  &:focus {
+    outline: none;
+    @include focus();
+    &::after {
+      margin: -10px;
+      border-radius: 4px !important;
+    }
+  }
+}
+.buttonContainer {
+  justify-self: flex-end;
+  margin-top: 20px;
+  @media (min-width: $breakpointLg) {
+    margin-top: 0;
+  }
+}
+.button {
+  @include button;
+  justify-items: flex-end;
+  width: 220px;
+}
+.hamburger {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  margin: $md $md;
+}

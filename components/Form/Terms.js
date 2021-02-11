@@ -4,6 +4,7 @@ import styles from "./Form.module.scss";
 import {
   unstable_useFormState as useFormState,
   unstable_Form as Form,
+  unstable_FormMessage as FormMessage,
   unstable_FormLabel as FormLabel,
   unstable_FormCheckbox as FormCheckbox,
   unstable_FormGroup as FormGroup,
@@ -14,18 +15,21 @@ const Terms = ({
   terms = "By registering I agree with our terms&conditions",
 }) => {
   return (
-    <div className={styles.radioLabel} key={terms}>
-      <label className={styles.itemRow}>
-        <FormCheckbox
-          className={styles.checkbox}
-          {...form}
-          name="comps"
-          value={terms}
-        />
-        <p>{terms}</p>
-        <InfoModal header={terms} info="this is some info" />
-      </label>
-    </div>
+    <>
+      <div className={styles.radioLabel} key={terms}>
+        <label className={styles.itemRow}>
+          <FormCheckbox
+            className={styles.checkbox}
+            {...form}
+            name="terms"
+            value={terms}
+          />
+          <p>{terms}</p>
+          <InfoModal header={terms} info="this is some info" />
+        </label>
+      </div>
+      <FormMessage className={styles.errorMessage} {...form} name="terms" />
+    </>
   );
 };
 export default Terms;
