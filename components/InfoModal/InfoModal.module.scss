@@ -5,7 +5,7 @@
 }
 .infoIcon {
   font-size: $md;
-  color: $blue;
+  color: $light;
   margin-left: 3px;
   cursor: pointer;
   &:hover {
@@ -25,7 +25,7 @@
 
 .card {
   background-color: #343639;
-  border-radius: 5px;
+  border-radius: 14px;
   padding: 0 10px;
   position: fixed;
   display: flex;
@@ -81,11 +81,18 @@
   justify-content: flex-end;
 }
 .closeIcon {
-  margin-top: 5px;
-  color: $blue;
+  margin-top: 8px;
+  color: white;
   &:hover {
     cursor: pointer;
     @include pulse;
+  }
+  &:focus {
+    @include focus();
+    &::after {
+      margin: -7px !important;
+      border-radius: 31px !important;
+    }
   }
 }
 .content {

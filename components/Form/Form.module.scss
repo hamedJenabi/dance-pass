@@ -11,6 +11,13 @@
 .input {
   @include fade-in-fast;
   @include input;
+  padding: 0 40px;
+  border: 1px solid $blue;
+  height: 60px;
+  border-radius: 30px;
+  &:focus {
+    outline: none;
+  }
 }
 .errorMessage {
   @include error;
