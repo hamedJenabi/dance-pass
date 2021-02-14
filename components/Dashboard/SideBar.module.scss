@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import '../../styles/variables';
 .container {
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@
   }
 }
 .drawer {
-  opacity: 0.9;
+  opacity: 1;
 }
 .text {
   padding: $xxs 0;
@@ -49,10 +49,10 @@
 .button {
   @include button;
   justify-items: flex-end;
-  width: 220px;
 }
 .hamburger {
   display: flex;
+  justify-content: flex-end;
   align-items: flex-end;
   width: 100%;
   margin: $md $md;

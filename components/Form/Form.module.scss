@@ -21,6 +21,12 @@
   &:hover {
     border: 1px solid rgb(111, 96, 96) !important;
   }
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px #fbfbfb inset;
+  }
 }
 .errorMessage {
   @include error;

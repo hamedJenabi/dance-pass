@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import '../../styles/variables';
 .container {
   display: flex;
   flex-direction: column;
@@ -13,7 +13,7 @@
   width: calc(100% - #{$sm});
   height: calc(100% - #{$xl});
   margin-top: $header;
-  background-color: $milk;
+  background-color: #949ca7;
   border-top-left-radius: $xl;
   border-top-right-radius: $xl;
   @media (min-width: $breakpointLg) {
@@ -32,11 +32,11 @@
   padding: $lg;
   flex-grow: 1;
   border-top-left-radius: $xl;
-  background-color: $milk;
+  background-color: $blue;
   box-shadow: none;
   border-top-right-radius: $xl;
   @media (min-width: $breakpointLg) {
-    background-color: $white;
+    background-color: $milk;
     border-radius: $xl;
     box-shadow: $boxShadow;
     margin: $xl;
@@ -44,5 +44,5 @@
 }
 .button {
   @include button;
-  justify-self: flex-end;
+  justify-self: flex-end; 
 }

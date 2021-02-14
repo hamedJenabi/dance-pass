@@ -96,7 +96,7 @@ export default function RegistrationForm({ form, data }) {
         placeholder="email"
       />
       <FormMessage className={styles.errorMessage} {...form} name="email" />
-      <Autocomplete
+      {/* <Autocomplete
         {...flatProps}
         id="debug"
         debug
@@ -111,7 +111,7 @@ export default function RegistrationForm({ form, data }) {
             }}
           />
         )}
-      />
+      /> */}
       <Divider light className={styles.devider} />
       <Tickets form={form} tickets={tickets} levels={levels} roles={roles} />
       <Divider light className={styles.devider} />
