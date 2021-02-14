@@ -1,53 +1,48 @@
-import Head from "next/head";
-import useMedia from "use-media";
-import React, { useState } from "react";
-import dynamic from "next/dynamic";
-import { emailRegex } from "../utils/validate";
-import styles from "../styles/Home.module.scss";
-import Header from "../components/Header/Header.js";
-import LoginHeader from "../components/Header/LoginHeader.js";
+import Head from 'next/head';
+import useMedia from 'use-media';
+import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
+import { emailRegex } from '../utils/validate';
+import styles from '../styles/Home.module.scss';
+import Header from '../components/Header/Header.js';
+import LoginHeader from '../components/Header/LoginHeader.js';
 const RegistrationForm = dynamic(
-  () => import("../components/Form/RegistrationForm.js"),
+  () => import('../components/Form/RegistrationForm.js'),
   { ssr: false }
 );
-import { unstable_useFormState as useFormState } from "reakit/Form";
+import { unstable_useFormState as useFormState } from 'reakit/Form';
 
 export default function Home() {
-  const isMobile = useMedia({ maxWidth: "768px" });
+  const isMobile = useMedia({ maxWidth: '768px' });
   const [step, setStep] = useState(1);
   const form = useFormState({
     values: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      country: "",
-      ticket: "",
-      role: "",
-      level: "",
-      competition: "",
+      firstName: '',
+      lastName: '',
+      email: '',
+      ticket: '',
+      role: '',
+      level: '',
+      competition: '',
       comps: [],
-      terms: "",
+      terms: '',
     },
     onValidate: (values) => {
       const errors = {};
       if (!values.firstName) {
-        errors.firstName = "please write your name";
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        errors.firstName = 'please write your name';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
       if (!values.lastName) {
-        errors.lastName = "please write your name";
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        errors.lastName = 'please write your name';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
       if (
         !values.email ||
         !emailRegex.test(values.email.trim().toLowerCase())
       ) {
-        errors.email = "Email is not valid";
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-      if (values.terms.length === 0) {
-        errors.terms = "Please check this box";
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        errors.email = 'Email is not valid';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
       if (Object.keys(errors).length > 0) {
         throw errors;
@@ -81,19 +76,19 @@ export default function Home() {
     },
   });
   const data = {
-    tickets: ["Fullpass", "Partypass", "Beginner Pass"],
-    levels: ["Intermediate", "Intermediate/Advanced", "Advanced", "Advanced+"],
+    tickets: ['Fullpass', 'Partypass', 'Beginner Pass'],
+    levels: ['Intermediate', 'Intermediate/Advanced', 'Advanced', 'Advanced+'],
     competitions: [
-      "MnM",
-      "Strictly",
-      "SoloSoloSoloSoloSoloSolo",
-      "Solo",
-      "Solo2",
-      "Solo4",
-      "Solo6",
-      "Solo8",
+      'MnM',
+      'Strictly',
+      'SoloSoloSoloSoloSoloSolo',
+      'Solo',
+      'Solo2',
+      'Solo4',
+      'Solo6',
+      'Solo8',
     ],
-    roles: ["Leader", "Follower"],
+    roles: ['Leader', 'Follower'],
   };
   return (
     <div className={styles.container}>
