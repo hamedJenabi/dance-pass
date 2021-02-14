@@ -93,8 +93,8 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>dance-pass</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Dance-Pass</title>
+        <link rel="icon" href="/favicon.png" />
         <link
           href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap"
           rel="stylesheet"
