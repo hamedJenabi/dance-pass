@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 import {
   unstable_useFormState as useFormState,
@@ -8,18 +8,18 @@ import {
   unstable_FormRadio as FormRadio,
   unstable_FormInput as FormInput,
   unstable_FormSubmitButton as FormSubmitButton,
-} from "reakit/Form";
-import classNames from "classnames";
-import TextField from "@material-ui/core/TextField";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-import Tickets from "./Ticket";
-import Terms from "./Terms";
-import Divider from "@material-ui/core/Divider";
-import styles from "./Form.module.scss";
-import Competitions from "./Competitions";
-import countries from "../../utils/countries";
-import ErrorModal from "../Modal/Modal";
-import { useDialogState } from "reakit/Dialog";
+} from 'reakit/Form';
+import classNames from 'classnames';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import Tickets from './Ticket';
+import Terms from './Terms';
+import Divider from '@material-ui/core/Divider';
+import styles from './Form.module.scss';
+import Competitions from './Competitions';
+import countries from '../../utils/countries';
+import ErrorModal from '../Modal/Modal';
+import { useDialogState } from 'reakit/Dialog';
 const flatProps = {
   options: countries.map((option) => option.title),
 };
@@ -29,7 +29,7 @@ export default function RegistrationForm({ form, data }) {
   const [disable, setDisable] = useState(true);
   const dialog = useDialogState();
 
-  console.log("form", form);
+  console.log('form', form);
   const { tickets, levels, competitions, roles } = data;
   const handleNext = (event) => {
     // if(form.values.firstName === '')
@@ -100,8 +100,7 @@ export default function RegistrationForm({ form, data }) {
         {...flatProps}
         id="debug"
         debug
-        className={styles.input}
-       
+        className={styles.countryInput}
         renderInput={(params) => (
           <TextField
             variant="outlined"

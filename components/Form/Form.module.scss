@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import '../../styles/variables';
 .container {
   display: flex;
   flex-direction: column;
@@ -18,6 +18,9 @@
   &:focus {
     outline: none;
   }
+  &:hover {
+    border: 1px solid rgb(111, 96, 96) !important;
+  }
 }
 .errorMessage {
   @include error;
@@ -25,11 +28,11 @@
 .countryInput {
   @include fade-in-fast;
   @include input;
-  border: 1px solid rgb(194, 188, 188);
+  border: 1px solid rgb(111, 96, 96) !important;
   height: 60px;
-  border-radius: 3px;
+  border-radius: 50px;
   &:hover {
-    border: 1px solid rgb(0, 0, 0.87);
+    border: 1px solid rgb(111, 96, 96) !important;
   }
 }
 .buttonWrapper {
@@ -145,7 +148,7 @@
   margin-top: 0;
   margin-right: 5px;
   &:after {
-    content: "✓";
+    content: '✓';
     display: none;
     color: white;
     font-size: 100%;
